@@ -1,0 +1,130 @@
+SQL> alter table employee1 add age 
+
+Table altered.
+
+SQL> desc employee1;
+ Name                                   
+ ----------------------------------
+ EMPID                                  
+ ENAME                                  
+ MANAGER                                
+ SALARY                                 
+ JOB                                    
+ COMM                                   
+ AGE                                    
+
+SQL> select * from employee1;
+
+     EMPID ENAME         MANAGER   
+---------- ---------- ---------- --
+      1001 Jay               123   
+      1002 Veer              456   
+      1003 Ram               789   
+      1004 Ruhi              963   
+      1005 Sham              852   
+
+SQL>  update employee set age=31 wh
+ update employee set age=31 where e
+                                  *
+ERROR at line 1:
+ORA-00904: "EMPID": invalid identif
+
+
+SQL> update employee1 set age=31 wh
+
+1 row updated.
+
+SQL> update employee1 set age=28 wh
+
+1 row updated.
+
+SQL>  update employee1 set age=42 w
+
+1 row updated.
+
+SQL> update employee1 set age=31 wh
+
+1 row updated.
+
+SQL> update employee1 set age=22  w
+
+1 row updated.
+
+SQL> select * from employee1;
+
+     EMPID ENAME         MANAGER   
+---------- ---------- ---------- --
+      1001 Jay               123   
+      1002 Veer              456   
+      1003 Ram               789   
+      1004 Ruhi              963   
+      1005 Sham              852   
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select empid,ename, age, salar
+
+     EMPID ENAME             AGE   
+---------- ---------- ---------- --
+      1001 Jay                31   
+      1002 Veer               28   
+      1003 Ram                42   
+      1004 Ruhi               31   
+      1005 Sham               22   
+
+SQL> 
+SQL> select count(empid) from emplo
+
+COUNT(EMPID)
+------------
+           5
+
+SQL> select count(ename) from emplo
+
+COUNT(ENAME)
+------------
+           5
+
+SQL> select max(age) from employee1
+
+  MAX(AGE)
+----------
+        42
+
+SQL> select min(age) from employee1
+
+  MIN(AGE)
+----------
+        22
+
+SQL> select empid,ename, age, salar
+
+     EMPID ENAME             AGE   
+---------- ---------- ---------- --
+      1001 Jay                31   
+      1003 Ram                42   
+      1004 Ruhi               31   
+      1005 Sham               22   
+      1002 Veer               28   
+
+SQL> select empid,ename, age, salar
+
+     EMPID ENAME             AGE   
+---------- ---------- ---------- --
+      1001 Jay                31   
+      1003 Ram                42   
+      1002 Veer               28   
+      1005 Sham               22   
+      1004 Ruhi               31   
+
+SQL> select empid,ename,salary from
+
+     EMPID ENAME          SALARY
+---------- ---------- ----------
+      1001 Jay             20000
+      1002 Veer            50000
+      1003 Ram             30000
+      1004 Ruhi           100000
+      1005 Sham            75000
