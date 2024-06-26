@@ -1,0 +1,66 @@
+SQL> create table CompDep(Roll int,Name varchar(20));
+
+Table created.
+
+SQL> create table Student(Roll int,Name varchar(20)) ;
+
+Table created.
+
+SQL> insert into Student values(1,'a');
+
+1 row created.
+
+SQL> insert into Student values(2,'b');
+
+1 row created.
+
+SQL> insert into Student values(3,'c');
+
+1 row created.
+
+SQL>  insert into Student values(4,'d');
+
+1 row created.
+
+SQL>   insert into CompDep values(5,'e');
+
+1 row created.
+
+SQL>  insert into CompDep values(6,'f');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+SQL> declare  cursor cu1 is select Roll,Name from Student;  cursor cu2 is select Roll from CompDep;
+  2  rno int; nm varchar(20); rno2 int;  begin  open cu1; open cu2;  loop  fetch cu1 into rno,nm; fe
+tch
+  3  cu2 into rno2;  exit when cu1%found = false; if rno2 <> rno then insert into CompDep values(rno
+,nm);
+  4  end if;  end loop; close cu1; close cu2; end;
+  5  /
+
+PL/SQL procedure successfully completed.
+
+SQL>  select * from CompDep;
+
+      ROLL NAME
+---------- --------------------
+         5 e
+         6 f
+         1 a
+         2 b
+         3 c
+         4 d
+
+6 rows selected.
+
+SQL> select * from Student;
+
+      ROLL NAME
+---------- --------------------
+         1 a
+         2 b
+         3 c
+         4 d
